@@ -3,8 +3,6 @@
 
 <br>
 <br>
-
-
 <div class="row">
     <div class="col-6">
         <form action="" method="post">

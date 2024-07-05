@@ -11,13 +11,9 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 })->name("home");
-
-
 Route::resource('categories', CategorieController::class)->parameters(['categories' => 'categorie']);
-
 Route::resource('produits', ProduitController::class);
 Route::get('/acheter/{categorie?}', [ProduitController::class, 'acheter'])->name('produits.acheter');
-
 
 Route::get('/commandes', [CommandeController::class, 'index'])->name('commandes.index');
 Route::post('/commandes', [CommandeController::class, 'store'])->name('commandes.store');

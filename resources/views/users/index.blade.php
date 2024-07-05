@@ -5,7 +5,6 @@
     <div class="col">
         <h4>Liste des Utilisateurs</h4>
     </div>
-
     <div class="col">
         @if(session('success'))
         <div class="alert alert-info">
@@ -14,7 +13,6 @@
         @endif
     </div>
 </div>
-
 @if(count($users) > 0)
 <table class="table table-striped table-bordered table-hover table-responsive">
     <thead>

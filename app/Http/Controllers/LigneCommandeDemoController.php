@@ -18,13 +18,10 @@ class LigneCommandeDemoController extends Controller
         $produits = LigneCommandeDemo::all()->where("id_user",Auth::user()->id);
         return view("commandes.panier",compact("produits"));
     }
-
     public function create()
     {
         //
-        
     }
-
     public function store(Request $request)
     {
         Gate::authorize("IsUser");
@@ -39,18 +36,14 @@ class LigneCommandeDemoController extends Controller
         $lignecommandedmo = LigneCommandeDemo::all()->where("id_user", Auth::user()->id);
             echo json_encode($lignecommandedmo->count());
     }
-
     public function show(LigneCommandeDemo $ligneCommandeDemo)
     {
         //
     }
-
     public function edit(LigneCommandeDemo $ligneCommandeDemo)
     {
         //
     }
-
-
     public function update(Request $request, LigneCommandeDemo $ligneCommandeDemo)
     {
         //

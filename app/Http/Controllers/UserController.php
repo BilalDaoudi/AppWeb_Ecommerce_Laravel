@@ -14,9 +14,7 @@ class UserController extends Controller
         Gate::authorize("IsAdmin");
         $users = User::where("role","client")->paginate(9);
         return view("users.index",compact('users'));
-        
     }
-
    public function create(){
         return view("login.inscription");
     }
@@ -31,8 +29,6 @@ class UserController extends Controller
         User::create(["name"=> $req->name,"email"=>$req->email,"password"=>Hash::make($req->password),"role"=>"client"]);
         return redirect()->route("login.show"); 
     }
-
-
     public function destroy(User $user)
     {
         $user->delete();

@@ -10,23 +10,19 @@ use Illuminate\Support\Facades\Gate;
 class CategorieController extends Controller
 {
     public function __construct(){
-        
         $this->middleware('auth');
     }
     public function index()
     {
-        
         Gate::authorize("IsAdmin");
         $categories = Categorie::paginate(7);
         return view('categories.index', compact('categories'));
     }
-
     public function create()
     {
         Gate::authorize("IsAdmin");
         return view('categories.create');
     }
-
     public function show(Categorie $categorie){
         Gate::authorize("IsAdmin");
         $produits = $categorie->produits;
@@ -41,13 +37,11 @@ class CategorieController extends Controller
 
         return redirect()->route("categories.index")->with('success', 'La catégorie a été créée avec succès.');
     }
-
     public function edit(Categorie $categorie)
     {
         Gate::authorize("IsAdmin");
         return view('categories.edit', compact('categorie'));
     }
-
     public function update(CategorieRequest $request, Categorie $categorie)
     {
         Gate::authorize("IsAdmin");

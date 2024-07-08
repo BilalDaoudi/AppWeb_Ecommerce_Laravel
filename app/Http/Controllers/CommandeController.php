@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Commande;
 use Illuminate\Http\Request;
 use App\Models\LigneCommande;
 use App\Models\LigneCommandeDemo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-
 class CommandeController extends Controller
 {
     public function __construct()
@@ -21,12 +19,10 @@ class CommandeController extends Controller
         $commandes = Commande::paginate(9);
         return view("commandes.index", compact("commandes"));
     }
-
     public function create()
     {
         //
     }
-
     public function store(Request $request)
     {
         Commande::create(["id_user" => Auth::user()->id, "datecommande" => now(), "etat" => "En Cours"]);
@@ -38,7 +34,6 @@ class CommandeController extends Controller
         }
         return redirect()->route("produits.acheter")->with('success', 'Commande Ajoutée avec succès');
     }
-
     public function show($id)
     {
         $commande = Commande::all()->find($id);

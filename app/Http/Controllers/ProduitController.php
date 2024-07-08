@@ -32,14 +32,12 @@ class ProduitController extends Controller
         $produits = Produit::paginate(8);
         return view('produit.index', compact('produits'));
     }
-
     public function create()
     {
         Gate::authorize("IsAdmin");
         $categories = Categorie::all();
         return view('produit.create', compact('categories'));
     }
-
     public function store(ProduitRequest $request)
     {
         Gate::authorize("IsAdmin");
@@ -47,16 +45,13 @@ class ProduitController extends Controller
         $imagePath = $request->file('image')->store('public/images');
         $liendata = explode("/", $imagePath);
         $validatedData['image'] = "storage/images/" . $liendata[2];
-
         Produit::create($validatedData);
         return redirect()->route("produits.index")->with('success', 'Produit créé avec succès');
     }
-
     public function show(Produit $produit)
     {
         // Afficher detail de Produit
     }
-
     public function edit(Produit $produit)
     {
         Gate::authorize("IsAdmin");

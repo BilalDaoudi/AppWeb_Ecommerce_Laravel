@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class LigneCommande extends Model
 {
     protected $table = "ligne_commandes";
-    
     protected $fillable = ["id_commande","codeproduit","quantite"];
     use HasFactory;
     public function produit()

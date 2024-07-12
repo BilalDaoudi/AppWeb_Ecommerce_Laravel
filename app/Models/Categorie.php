@@ -9,7 +9,6 @@ class Categorie extends Model
 {
     use HasFactory;
     protected $fillable = ['description'];
-
     public function produits()
     {
         return $this->hasMany(Produit::class,"id_categorie");

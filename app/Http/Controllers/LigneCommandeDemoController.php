@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Models\LigneCommandeDemo;
 use Illuminate\Http\Request;
@@ -11,12 +10,14 @@ class LigneCommandeDemoController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
+    
     public function index()
     {
         Gate::authorize("IsUser");
         $produits = LigneCommandeDemo::all()->where("id_user",Auth::user()->id);
         return view("commandes.panier",compact("produits"));
     }
+    
     public function create()
     {
         //

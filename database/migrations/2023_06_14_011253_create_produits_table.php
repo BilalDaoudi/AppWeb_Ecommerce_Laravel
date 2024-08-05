@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    
     public function up(): void
     {
         Schema::create('produits', function (Blueprint $table) {
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+    
     /**
      * Reverse the migrations.
      */
@@ -26,4 +28,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('produits');
     }
+    
 };

@@ -13,16 +13,19 @@ class CommandeController extends Controller
     {
         $this->middleware('auth');
     }
+    
     public function index()
     {
         Gate::authorize("IsAdmin");
         $commandes = Commande::paginate(9);
         return view("commandes.index", compact("commandes"));
     }
+    
     public function create()
     {
         //
     }
+    
     public function store(Request $request)
     {
         Commande::create(["id_user" => Auth::user()->id, "datecommande" => now(), "etat" => "En Cours"]);

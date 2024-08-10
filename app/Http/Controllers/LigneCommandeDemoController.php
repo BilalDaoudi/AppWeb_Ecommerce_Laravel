@@ -10,7 +10,6 @@ class LigneCommandeDemoController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
-    
     public function index()
     {
         Gate::authorize("IsUser");
@@ -18,10 +17,6 @@ class LigneCommandeDemoController extends Controller
         return view("commandes.panier",compact("produits"));
     }
     
-    public function create()
-    {
-        //
-    }
     public function store(Request $request)
     {
         Gate::authorize("IsUser");

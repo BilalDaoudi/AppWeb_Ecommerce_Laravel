@@ -10,26 +10,22 @@ class CategorieController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
-    
     public function index()
     {
         Gate::authorize("IsAdmin");
         $categories = Categorie::paginate(7);
         return view('categories.index', compact('categories'));
     }
-    
     public function create()
     {
         Gate::authorize("IsAdmin");
         return view('categories.create');
     }
-    
     public function show(Categorie $categorie){
         Gate::authorize("IsAdmin");
         $produits = $categorie->produits;
         return view('categories.show', compact('categorie',"produits"));
     }
-    
     public function store(CategorieRequest $request)
     {
         Gate::authorize("IsAdmin");

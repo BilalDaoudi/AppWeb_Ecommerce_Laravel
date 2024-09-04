@@ -7,15 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
 {
+    
     use HasFactory;
+    
     protected $primaryKey = "id";
-    protected $fillable = ["id_user","datecommande","etat"];
+    
+    protected $fillable = ["id_user","datecommande","etat"];*
+    
     public function user()
     {
+        
         return $this->belongsTo(User::class, 'id_user');
+        
     }
     public function lignecommande()
     {
+        
         return $this->hasMany(LigneCommande::class,"id_commande");
+        
     }
 }

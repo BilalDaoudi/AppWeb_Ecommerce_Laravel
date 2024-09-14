@@ -7,15 +7,18 @@ use Illuminate\Support\Facades\Gate;
 
 class LigneCommandeDemoController extends Controller
 {
+    
     public function __construct(){
         $this->middleware('auth');
     }
+    
     public function index()
     {
         Gate::authorize("IsUser");
         $produits = LigneCommandeDemo::all()->where("id_user",Auth::user()->id);
         return view("commandes.panier",compact("produits"));
     }
+
     
     public function store(Request $request)
     {
@@ -31,19 +34,7 @@ class LigneCommandeDemoController extends Controller
         $lignecommandedmo = LigneCommandeDemo::all()->where("id_user", Auth::user()->id);
             echo json_encode($lignecommandedmo->count());
     }
-    public function show(LigneCommandeDemo $ligneCommandeDemo)
-    {
-        //
-    }
-    public function edit(LigneCommandeDemo $ligneCommandeDemo)
-    {
-        //
-    }
-    public function update(Request $request, LigneCommandeDemo $ligneCommandeDemo)
-    {
-        //
-    }
-
+    
     public function destroy($id)
     {
         Gate::authorize("IsUser");

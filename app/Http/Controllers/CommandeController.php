@@ -8,21 +8,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class CommandeController extends Controller
-{
+{ 
+    
     public function __construct()
     {
         $this->middleware('auth');
     }
+    
     public function index()
     {
         Gate::authorize("IsAdmin");
         $commandes = Commande::paginate(9);
         return view("commandes.index", compact("commandes"));
     }
+    
     public function create()
     {
         //
     }
+    
     public function store(Request $request)
     {
         Commande::create(["id_user" => Auth::user()->id, "datecommande" => now(), "etat" => "En Cours"]);
@@ -34,6 +38,7 @@ class CommandeController extends Controller
         }
         return redirect()->route("produits.acheter")->with('success', 'Commande Ajoutée avec succès');
     }
+    
     public function show($id)
     {
         $commande = Commande::all()->find($id);
@@ -51,6 +56,7 @@ class CommandeController extends Controller
         return view("commandes.show", compact("commande", "produits", "lignecommandes"));
     }
 
+    
     public function destroy($commande)
     {
         $commande_delete = Commande::all()->find($commande);
@@ -58,6 +64,7 @@ class CommandeController extends Controller
         $commande_delete->delete();
         return back()->with('success', 'Commande supprimée avec succès');
     }
+    
     public function valider($commande)
     {
         Gate::authorize("IsAdmin");
@@ -66,6 +73,7 @@ class CommandeController extends Controller
         $commande_valider->save();
         return back()->with('success', 'Commande Validée avec succès');
     }
+    
     public function annuler($commande)
     {
         
@@ -75,10 +83,12 @@ class CommandeController extends Controller
         $commande_Annuler->save();
         return back()->with('success', 'Commande Annulée avec succès');
     }
+    
     public function mescommandes()
     {
         Gate::authorize("IsUser");
         $commandes = Commande::all()->where("id_user",Auth::user()->id);
         return view("commandes.mescommandes", compact("commandes"));
     }
+    
 }

@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ProduitController extends Controller
 {
+    
     public function __construct()
     {
         $this->middleware('auth');
     }
+    
     public function acheter($categorie = null)
     {
         Gate::authorize("IsUser");
@@ -25,18 +27,21 @@ class ProduitController extends Controller
 
         return view('produit.acheter', compact('produits', 'categories'));
     }
+    
     public function index()
     {
         Gate::authorize("IsAdmin");
         $produits = Produit::paginate(8);
         return view('produit.index', compact('produits'));
     }
+    
     public function create()
     {
         Gate::authorize("IsAdmin");
         $categories = Categorie::all();
         return view('produit.create', compact('categories'));
     }
+    
     public function store(ProduitRequest $request)
     {
         Gate::authorize("IsAdmin");
@@ -47,10 +52,12 @@ class ProduitController extends Controller
         Produit::create($validatedData);
         return redirect()->route("produits.index")->with('success', 'Produit créé avec succès');
     }
+    
     public function show(Produit $produit)
     {
         // Afficher detail de Produit
     }
+    
     public function edit(Produit $produit)
     {
         Gate::authorize("IsAdmin");
@@ -58,6 +65,7 @@ class ProduitController extends Controller
         $categories = Categorie::all();
         return view('produit.edit', compact('produit', 'categories'));
     }
+    
 
     public function update(Request $request, Produit $produit)
     {
@@ -83,11 +91,13 @@ class ProduitController extends Controller
         return redirect()->route("produits.index")->with('success', 'Produit mis à jour avec succès');
     }
 
+    
     public function destroy(Produit $produit)
     {
         Gate::authorize("IsAdmin");
         Storage::delete($produit->image);
         $produit->delete();
         return back()->with('success', 'Produit supprimé avec succès');
-    }
+    
+    
 }

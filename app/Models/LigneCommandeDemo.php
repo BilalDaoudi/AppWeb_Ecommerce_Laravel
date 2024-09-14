@@ -9,15 +9,10 @@ class LigneCommandeDemo extends Model
 {
     
     use HasFactory;
-    
     protected $primaryKey = "id";
-    
     protected $fillable = ['id_user','codeproduit',"quantite"];
-    
     public function produit()
     {
-        
         return $this->belongsTo(Produit::class, 'codeproduit');
-        
     }
 }

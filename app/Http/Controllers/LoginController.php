@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
+    
     public function show()
     {
         return view("login.show");
     }
+    
     public function login(Request $req)
     {
         $T = [
@@ -26,10 +28,12 @@ class LoginController extends Controller
         } else
             return back()->with("erreur", "Email ou mot de passe incorrect");
     }
+    
     public function logout()
     {
         Session::flush();
         Auth::logout();
         return redirect()->route("home");
     }
+    
 }

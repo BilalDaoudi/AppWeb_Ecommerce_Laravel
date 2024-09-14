@@ -9,11 +9,8 @@ use Illuminate\Support\Facades\Storage;
 class Produit extends Model
 {
     use HasFactory;
-    
     protected $primaryKey = 'codeproduit';
-    
     public $incrementing = false;
-    
     protected $fillable = [
         'codeproduit',
         'description',
@@ -21,17 +18,12 @@ class Produit extends Model
         'prix',
         'id_categorie',
     ];
-    
     public function categorie()
     {
-        
         return $this->belongsTo(Categorie::class, 'id_categorie');
-        
     }
     public function getImageUrlAttribute()
     {
-        
         return Storage::url($this->image);
-        
     }
 }

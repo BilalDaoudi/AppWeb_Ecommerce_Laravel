@@ -8,6 +8,10 @@ use App\Models\Categorie;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
+
+
+
+
 class ProduitController extends Controller
 {
     

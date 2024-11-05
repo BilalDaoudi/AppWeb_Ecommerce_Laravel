@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Storage;
 
 
 
+
+
+
 class ProduitController extends Controller
 {
     

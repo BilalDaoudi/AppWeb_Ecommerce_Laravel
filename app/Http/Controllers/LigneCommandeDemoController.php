@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Gate;
 
 class LigneCommandeDemoController extends Controller
 {
+
+
+
     
     public function __construct(){
         $this->middleware('auth');

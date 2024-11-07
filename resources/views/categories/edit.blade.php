@@ -1,6 +1,9 @@
 <!-- resources/views/categories/edit.blade.php -->
 @extends('layouts.app')
 
+
+
+
 @section('content')
 <h1>Modifier la catégorie</h1>
 

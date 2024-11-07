@@ -1,6 +1,9 @@
 <!-- resources/views/categories/index.blade.php -->
 @extends('layouts.app')
 
+
+
+
 @section('content')
 <div class="row m-2">
     <div class="col-4">

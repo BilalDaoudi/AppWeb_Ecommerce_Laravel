@@ -8,6 +8,11 @@
         <h4>Ton Panier</h4>
     </div>
 
+
+
+
+
+    
     <div class="col-4">
         @if(session('success'))
         <div class="alert alert-info">

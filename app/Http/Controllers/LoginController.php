@@ -6,14 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 
-
-
-
 class LoginController extends Controller
 {
-
-
-    
     public function show()
     {
         return view("login.show");

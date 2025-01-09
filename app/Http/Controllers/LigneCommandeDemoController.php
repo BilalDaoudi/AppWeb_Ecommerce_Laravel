@@ -17,6 +17,13 @@ class LigneCommandeDemoController extends Controller
         return view("commandes.panier",compact("produits"));
     }
 
+
+
+
+
+
+
+    
     
     public function store(Request $request)
     {

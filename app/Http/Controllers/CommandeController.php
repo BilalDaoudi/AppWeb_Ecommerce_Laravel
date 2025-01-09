@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 
+
+
+
+
+
+
 class CommandeController extends Controller
 { 
     public function __construct()
